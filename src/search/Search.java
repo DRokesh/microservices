@@ -5,22 +5,17 @@ import java.util.Scanner;
 
 public class Search {
 
-	
+	Restaurants searchRestaurants(String searchText) {
+		// ArrayList<Restaurants> restList = findRestaurants(searchText);
 
-	void searchRestaurants(String searchText) {
-		//ArrayList<Restaurants> restList = findRestaurants(searchText);
-		boolean foundFlag= false;
 		for (int i = 0; i < foodyDriver.restaurantList.size(); i++) {
 			if (foodyDriver.restaurantList.get(i).restaurantName.equalsIgnoreCase(searchText)) {
-				//outputModule.writeOutput();
-				System.out.println(foodyDriver.restaurantList.get(i).restaurantName + " "
-						+ foodyDriver.restaurantList.get(i).restaurantType);
-				foundFlag=true;
+				foodyDriver.restaurantList.get(i)
+						.setNumberofRatings(foodyDriver.restaurantList.get(i).getNumberofRatings()+1);
+				return foodyDriver.restaurantList.get(i);
 			}
 		}
-		if(!foundFlag) {
-			System.out.println("No matches found");
-		}
+		return null;
 
 	}
 }
